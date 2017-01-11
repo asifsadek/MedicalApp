@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical"
+    tools:context="base.com.medicalapp.activity.RegisterActivity">
+
+    <include
+        layout="@layout/header_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nameEditText"
+                style="@style/register_edit_text_style"
+                android:hint="@string/your_name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/pharmacyNameEditText"
+                style="@style/register_edit_text_style"
+                android:hint="@string/pharmacy_name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                style="@style/register_edit_text_style"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/addressEditText"
+                style="@style/register_edit_text_style"
+                android:layout_height="80dp"
+                android:hint="@string/address"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/tinNoEditText"
+                style="@style/register_edit_text_style"
+                android:hint="@string/tin_no"
+                android:layout_marginTop="40dp"
+                android:inputType="text" />
+
+
+            <EditText
+                android:id="@+id/dlNoEditText"
+                style="@style/register_edit_text_style"
+                android:hint="@string/dl_no"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                style="@style/register_edit_text_style"
+                android:hint="@string/password"
+                android:layout_marginTop="40dp"
+
+                android:inputType="textPassword" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:text="@string/register"
+                android:background="@drawable/round_corner_blue"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:id="@+id/registerButton"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

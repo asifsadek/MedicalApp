@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_marginBottom="1dp"
+    android:background="@color/color_light_gray"
+    >
+
+    <TextView
+        android:id="@+id/orderId"
+        android:layout_width="110dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="1234"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:textAlignment="viewStart"
+        android:layout_marginRight="5dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/right_arrow"
+        android:layout_marginEnd="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailDisclosure" />
+
+    <TextView
+        android:id="@+id/medicineSpec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20*30"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:background="@drawable/round_corner_dark_gray"
+        android:textColor="@color/color_white"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/orderId"
+        android:layout_alignBottom="@+id/orderId"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/round_corner_blue"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/medicineSpec"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/medType"
+        android:layout_toLeftOf="@+id/medicineSpec" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:id="@+id/medicineMrp"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/detailDisclosure"/>
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:srcCompat="@drawable/round_corner_blue"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/medicineMrp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/schemeFlag"
+        android:foregroundTint="@android:color/holo_green_dark" />
+
+</RelativeLayout>
