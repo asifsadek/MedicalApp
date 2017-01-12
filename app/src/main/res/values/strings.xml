@@ -17,5 +17,5 @@
     <string name="products">Products</string>
     <string name="schemes">Schemes</string>
     <string name="no_network">Your network gave up!</string>
-
+    <string name="addCart">Add To Cart</string>
 </resources>
