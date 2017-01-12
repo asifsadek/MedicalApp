@@ -42,7 +42,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/orderId"
+        android:id="@+id/schemeId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="1234"

@@ -1,7 +1,6 @@
 package base.com.medicalapp.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +75,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
         public ViewHolder(View v) {
             super(v);
-            orderId = (TextView) v.findViewById(R.id.orderId);
+            orderId = (TextView) v.findViewById(R.id.schemeId);
             date = (TextView) v.findViewById(R.id.date);
             status = (TextView) v.findViewById(R.id.status);
         }

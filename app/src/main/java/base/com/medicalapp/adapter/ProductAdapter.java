@@ -88,7 +88,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         public ViewHolder(View v) {
             super(v);
-            medicineName = (TextView) v.findViewById(R.id.orderId);
+            medicineName = (TextView) v.findViewById(R.id.schemeId);
             medicineSpec = (TextView) v.findViewById(R.id.medicineSpec);
             medicineMrp  = (TextView) v.findViewById(R.id.medicineMrp);
             schemeFlag   = (ImageView) v.findViewById(R.id.schemeFlag);

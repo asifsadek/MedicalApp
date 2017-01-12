@@ -17,6 +17,7 @@ import base.com.medicalapp.adapter.SchemeAdapter;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
 import base.com.medicalapp.model.Product;
+import base.com.medicalapp.model.Scheme;
 
 /**
  * Created by Abhishek on 1/7/2017.
@@ -28,7 +29,7 @@ public class SchemesFragment extends BaseFragment {
     private View fragmentView;
     private RecyclerView schemeRecyclerView;
     private static final String ORDER_SCHEME_URL
-            = "Retailer%20Order%20Schemes?api_key=keyOKgBm0Ho3UFLs6";
+            = "Schemes?api_key=keyOKgBm0Ho3UFLs6";
 
     @Nullable
     @Override
@@ -48,8 +49,8 @@ public class SchemesFragment extends BaseFragment {
 
                 if (baseResponse != null && baseResponse.isSuccess()) {
                     Gson gson = new Gson();
-                    Product products = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), Product.class);
-                    schemeAdapter.updateData(products.records);
+                    Scheme schemes = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), Scheme.class);
+                    schemeAdapter.updateData(schemes.records);
 
                 }
 

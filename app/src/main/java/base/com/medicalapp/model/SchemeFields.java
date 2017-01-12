@@ -10,41 +10,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class SchemeFields {
 
-    @SerializedName("Scheme")
-    @Expose
-    public List<String> scheme = null;
-    @SerializedName("Retailer Scheme Status")
-    @Expose
-    public Boolean retailerSchemeStatus;
-    @SerializedName("Orders")
-    @Expose
-    public List<String> orders = null;
-    @SerializedName("Retailer")
-    @Expose
-    public List<String> retailer = null;
     @SerializedName("Code")
     @Expose
-    public List<String> code = null;
-    @SerializedName("ID")
+    public String code;
+    @SerializedName("Associated Product")
     @Expose
-    public List<String> iD = null;
-    @SerializedName("Discount \u20b9")
-    @Expose
-    public List<Integer> discount = null;
+    public List<String> associatedProduct = null;
     @SerializedName("Type")
     @Expose
-    public List<String> type = null;
-    @SerializedName("Name")
+    public String type;
+    @SerializedName("Retailer Product Schemes")
     @Expose
-    public List<String> name = null;
-    @SerializedName("Scheme Status")
+    public List<Object> retailerProductSchemes = null;
+    @SerializedName("Is Product")
     @Expose
-    public List<Boolean> schemeStatus = null;
-    @SerializedName("Expiry Date")
-    @Expose
-    public List<String> expiryDate = null;
-    @SerializedName("Status")
-    @Expose
-    public Integer status;
-
+    public Integer isProduct;
 }

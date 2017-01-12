@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:id="@+id/orderId"
+        android:id="@+id/schemeId"
         android:layout_width="110dip"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -42,8 +42,8 @@
         android:background="@drawable/round_corner_dark_gray"
         android:textColor="@color/color_white"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/orderId"
-        android:layout_alignBottom="@+id/orderId"
+        android:layout_alignBaseline="@+id/schemeId"
+        android:layout_alignBottom="@+id/schemeId"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 

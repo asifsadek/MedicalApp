@@ -9,7 +9,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import base.com.medicalapp.R;
-import base.com.medicalapp.model.ProductRecord;
 import base.com.medicalapp.model.SchemeRecord;
 
 
@@ -53,7 +52,7 @@ public class SchemeAdapter extends RecyclerView.Adapter<SchemeAdapter.ViewHolder
 
         public ViewHolder(View v) {
             super(v);
-            medicineName = (TextView) v.findViewById(R.id.orderId);
+            medicineName = (TextView) v.findViewById(R.id.schemeId);
             medicineExpery = (TextView) v.findViewById(R.id.medicineExpery);
 
         }
