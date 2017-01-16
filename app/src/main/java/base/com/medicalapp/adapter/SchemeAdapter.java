@@ -44,15 +44,8 @@ public class SchemeAdapter extends RecyclerView.Adapter<SchemeAdapter.ViewHolder
             @Override
             public void onClick(View v) {
 
-                // 2
-                Intent detailIntent = new Intent(context, SchemeDetailActivity.class);
+               gotoSchemeDetailPage(jsonObject.id);
 
-                // 3
-                detailIntent.putExtra("record", jsonObject.id);
-
-
-                // 4
-                context.startActivity(detailIntent);
             }
         });
     }
@@ -62,6 +55,14 @@ public class SchemeAdapter extends RecyclerView.Adapter<SchemeAdapter.ViewHolder
         // update the adapter's dataset
         schemeRecordArray = recordArray;
         notifyDataSetChanged();
+    }
+
+    private void gotoSchemeDetailPage(String id){
+
+        Intent detailIntent = new Intent(context, SchemeDetailActivity.class);
+        detailIntent.putExtra("record", id);
+        context.startActivity(detailIntent);
+
     }
 
     public SchemeRecord getItem(int position) {

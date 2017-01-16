@@ -77,15 +77,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             @Override
             public void onClick(View v) {
 
-                // 2
-                Intent detailIntent = new Intent(context, ProductDetailActivity.class);
+               gotoProductDetailPage(jsonObject.id);
 
-                // 3
-                detailIntent.putExtra("record", jsonObject.id);
-
-
-                // 4
-                context.startActivity(detailIntent);
             }
         });
 
@@ -99,6 +92,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             return productRecordArray.size();
         }
         return 0;
+    }
+
+    private void gotoProductDetailPage(String id){
+
+        Intent detailIntent = new Intent(context, ProductDetailActivity.class);
+        detailIntent.putExtra("record",id);
+        context.startActivity(detailIntent);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

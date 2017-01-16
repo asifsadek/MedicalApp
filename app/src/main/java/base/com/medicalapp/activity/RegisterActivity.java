@@ -48,11 +48,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         newRetailer.retailerFields.address = getValueFromView(R.id.addressEditText);
         newRetailer.retailerFields.tINNo = getValueFromView(R.id.tinNoEditText);
         newRetailer.retailerFields.dLNo = getValueFromView(R.id.dlNoEditText);
-        String password = getValueFromView(R.id.passwordEditText);
 
 
         if (newRetailer.retailerFields.contactName != null && newRetailer.retailerFields.name != null && newRetailer.retailerFields.email != null && newRetailer.retailerFields.address != null &&
-                newRetailer.retailerFields.tINNo != null && newRetailer.retailerFields.dLNo != null && password != null) {
+                newRetailer.retailerFields.tINNo != null && newRetailer.retailerFields.dLNo != null) {
 
             //NetworkManager.post(this.getBaseContext(), REGISTER_URL, null, new NetworkManager.NetworkInterface() {
              //   @Override

@@ -23,6 +23,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+
     protected   String getValueFromView(int id){
         return "";
     }
