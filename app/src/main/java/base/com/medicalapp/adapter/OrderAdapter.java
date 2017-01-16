@@ -37,6 +37,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             holder.status.setText(jsonObject.orderFields.status);
             if(jsonObject.orderFields.status == "SHIPPED")
              holder.status.setBackgroundResource(android.R.color.holo_green_light);
+            else if(jsonObject.orderFields.status == "FAILED" || jsonObject.orderFields.status == "REJECTED")
+                holder.status.setBackgroundResource(android.R.color.holo_red_light);
+            else
+                holder.status.setBackgroundResource(R.color.colorAccent);
 
         }
 
