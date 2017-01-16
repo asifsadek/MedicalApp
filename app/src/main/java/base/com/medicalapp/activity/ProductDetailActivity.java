@@ -71,7 +71,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     public void initViews(ProductFields productFields) {
 
-        productNameTextView = (TextView) findViewById(R.id.textViewSchemeName);
+        productNameTextView = (TextView) findViewById(R.id.textOrder);
         unitPackTextView = (TextView) findViewById(R.id.textExpiry);
         formTextView = (TextView) findViewById(R.id.textViewSchemeType);
         compositionTextView = (TextView) findViewById(R.id.textViewComposition);

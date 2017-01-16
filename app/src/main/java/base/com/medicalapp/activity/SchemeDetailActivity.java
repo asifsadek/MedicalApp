@@ -1,25 +1,14 @@
 package base.com.medicalapp.activity;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewParent;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import base.com.medicalapp.R;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
-import base.com.medicalapp.model.ProductFields;
-import base.com.medicalapp.model.ProductRecord;
 import base.com.medicalapp.model.SchemeFields;
 import base.com.medicalapp.model.SchemeRecord;
 
@@ -69,7 +58,7 @@ public class SchemeDetailActivity extends AppCompatActivity {
 
     public void initViews(SchemeFields schemeFields) {
 
-        schemeNameTextView = (TextView) findViewById(R.id.textViewSchemeName);
+        schemeNameTextView = (TextView) findViewById(R.id.textOrder);
         schemeExpiryDateTextView = (TextView) findViewById(R.id.textViewExpiryDate);
         schemeTypeTextView = (TextView) findViewById(R.id.textViewSchemeType);
         schemeDescriptionTextview = (TextView) findViewById(R.id.textViewDescription);

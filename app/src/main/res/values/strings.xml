@@ -26,4 +26,5 @@
     <string name="Quantity">Quantity</string>
     <string name="Expiry">Expiry Date : </string>
     <string name="addScheme">Add Scheme</string>
+    <string name="orderId">OrderId :</string>
 </resources>

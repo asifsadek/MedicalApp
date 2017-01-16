@@ -8,7 +8,7 @@
     android:background="@color/color_gray">
 
     <TextView
-        android:text="TextView"
+        android:text="@string/orderId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -118,13 +118,15 @@
         android:layout_marginTop="29dp"
         android:id="@+id/editTextQuantity" />
 
-    <Button
-        android:text="@string/addCart"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextQuantity"
-        android:layout_alignEnd="@+id/textViewSchemeType"
-        android:layout_marginTop="36dp"
-        android:id="@+id/buttonAddCart" />
+        android:layout_alignBottom="@+id/textOrder"
+        android:layout_toEndOf="@+id/textViewDescription"
+        android:id="@+id/textViewOrderId"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="viewStart"
+        android:layout_marginLeft="3dp" />
 </RelativeLayout>
 
