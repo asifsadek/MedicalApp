@@ -11,9 +11,7 @@ import java.util.List;
 import base.com.medicalapp.R;
 import base.com.medicalapp.model.ProductRecord;
 
-/**
- * Created by ctsuser1 on 1/16/17.
- */
+
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
