@@ -59,14 +59,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             holder.medicineName.setText(imageID);
             holder.medicineMrp.setText(Float.toString(jsonObject.fields.mRP));
             holder.schemeFlag.setVisibility(View.INVISIBLE);
-            if(jsonObject.fields.productSchemes!=null) {
-                holder.schemeFlag.setImageResource(R.drawable.scheme);
-                holder.schemeFlag.setVisibility(View.VISIBLE);
-            }
+           // if(jsonObject.fields.productSchemes!=null) {
+              //  holder.schemeFlag.setImageResource(R.drawable.scheme);
+            //    holder.schemeFlag.setVisibility(View.VISIBLE);
+           // }
             //holder.medicineSpec.setText(jsonObject.fields.);
         }
         //holder.medicineName.setText("Cefimak");
-        holder.medicineSpec.setText("30*"+position);
+        holder.medicineSpec.setText(jsonObject.fields.pack);
 
     }
 

@@ -8,37 +8,31 @@ public class ProductFields {
 
     @SerializedName("SKU")
     @Expose
-    public String sKU;
-    @SerializedName("Image")
-    @Expose
-    public List<Image> image = null;
+    public Integer sKU;
     @SerializedName("Composition")
     @Expose
     public String composition;
-    @SerializedName("Unit Pack")
-    @Expose
-    public String unitPack;
     @SerializedName("Name")
     @Expose
     public String name;
     @SerializedName("PTR (per Unit Pack)")
     @Expose
-    public Float pTRPerUnitPack;
+    public Integer pTRPerUnitPack;
     @SerializedName("Type")
     @Expose
     public List<String> type = null;
     @SerializedName("MRP")
     @Expose
-    public Float mRP;
-    @SerializedName("Order Items")
+    public Integer mRP;
+    @SerializedName("Pack Description")
     @Expose
-    public List<String> orderItems = null;
-    @SerializedName("Product Schemes")
+    public String packDescription;
+    @SerializedName("Form")
     @Expose
-    public List<String> productSchemes = null;
-    @SerializedName("Retail Packing")
+    public String form;
+    @SerializedName("Pack")
     @Expose
-    public String retailPacking;
+    public String pack;
 
 
 }
