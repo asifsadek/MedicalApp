@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class ProductFields {
 
+    @SerializedName("Image")
+    @Expose
+    public List<Image> image = null;
     @SerializedName("SKU")
     @Expose
     public Integer sKU;
@@ -17,13 +20,13 @@ public class ProductFields {
     public String name;
     @SerializedName("PTR (per Unit Pack)")
     @Expose
-    public Integer pTRPerUnitPack;
+    public Float pTRPerUnitPack;
     @SerializedName("Type")
     @Expose
     public List<String> type = null;
     @SerializedName("MRP")
     @Expose
-    public Integer mRP;
+    public Float mRP;
     @SerializedName("Pack Description")
     @Expose
     public String packDescription;
@@ -33,6 +36,7 @@ public class ProductFields {
     @SerializedName("Pack")
     @Expose
     public String pack;
+
 
 
 }

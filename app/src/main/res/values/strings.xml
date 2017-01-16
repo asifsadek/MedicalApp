@@ -22,5 +22,6 @@
     <string name="composition">Composition</string>
     <string name="Delete">Remove</string>
     <string name="Edit">Edit</string>
-    <string name="Edit">Edit</string>
+    <string name="Type">Type</string>
+    <string name="Quantity">Quantity</string>
 </resources>

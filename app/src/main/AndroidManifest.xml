@@ -33,6 +33,7 @@
             android:name=".activity.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.ProductDetailActivity"></activity>
     </application>
 
 </manifest>

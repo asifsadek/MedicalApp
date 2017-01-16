@@ -28,10 +28,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         ProductRecord jsonObject = getItem(position);
-        if (jsonObject.fields.productSchemes!=null) {
+        //if (jsonObject.fields.productSchemes!=null) {
 
 
-        }
+       // }
     }
 
     public void updateData(List<ProductRecord> recordArray) {

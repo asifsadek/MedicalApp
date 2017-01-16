@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textViewProductDetail"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewProductDetail"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textViewUnitPack"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewUnitPack"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="21dp"
+        android:id="@+id/textViewForm" />
+
+    <TextView
+        android:text="@string/composition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewUnitPack"
+        android:layout_alignStart="@+id/textViewUnitPack"
+        android:layout_marginTop="23dp"
+        android:id="@+id/textViewComp"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewComp"
+        android:layout_alignStart="@+id/textViewComp"
+        android:layout_marginTop="13dp"
+        android:id="@+id/textViewComposition"
+        android:inputType="textMultiLine"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:text="@string/Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewComposition"
+        android:layout_alignStart="@+id/textViewComposition"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textType"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textType"
+        android:layout_alignStart="@+id/textType"
+        android:layout_marginTop="20dp"
+        android:inputType="textMultiLine"
+        android:id="@+id/textViewType" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewType"
+        android:layout_alignEnd="@+id/textViewForm"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="42dp"
+        android:id="@+id/textViewMRP"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textAlignment="viewEnd" />
+
+    <TextView
+        android:text="@string/Quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewMRP"
+        android:layout_alignStart="@+id/textViewType"
+        android:layout_marginTop="42dp"
+        android:id="@+id/textView10" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/textViewMRP"
+        android:layout_alignEnd="@+id/textViewMRP"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="29dp"
+        android:id="@+id/editTextQuantity" />
+
+    <Button
+        android:text="@string/addCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextQuantity"
+        android:layout_alignEnd="@+id/textViewForm"
+        android:layout_marginTop="36dp"
+        android:id="@+id/buttonAddCart" />
+</RelativeLayout>
+
