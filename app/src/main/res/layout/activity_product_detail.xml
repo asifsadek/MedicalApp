@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" >
+    android:paddingRight="16dp"
+    android:background="@color/color_gray">
 
     <TextView
         android:text="TextView"
@@ -12,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="12dp"
-        android:id="@+id/textViewProductDetail"
+        android:id="@+id/textViewSchemeName"
         android:textSize="24sp"
         android:textStyle="normal|bold"
         android:textAlignment="center"
@@ -23,30 +25,30 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewProductDetail"
+        android:layout_below="@+id/textViewSchemeName"
         android:layout_alignParentStart="true"
         android:layout_marginStart="13dp"
         android:layout_marginTop="19dp"
-        android:id="@+id/textViewUnitPack"
+        android:id="@+id/textExpiry"
         android:textAlignment="viewStart" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textViewUnitPack"
+        android:layout_alignBottom="@+id/textExpiry"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="21dp"
-        android:id="@+id/textViewForm" />
+        android:id="@+id/textViewSchemeType" />
 
     <TextView
         android:text="@string/composition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewUnitPack"
-        android:layout_alignStart="@+id/textViewUnitPack"
+        android:layout_below="@+id/textExpiry"
+        android:layout_alignStart="@+id/textExpiry"
         android:layout_marginTop="23dp"
-        android:id="@+id/textViewComp"
+        android:id="@+id/textViewDescription"
         android:textSize="18sp"
         android:textStyle="normal|bold"
         android:textAlignment="viewStart" />
@@ -55,8 +57,8 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewComp"
-        android:layout_alignStart="@+id/textViewComp"
+        android:layout_below="@+id/textViewDescription"
+        android:layout_alignStart="@+id/textViewDescription"
         android:layout_marginTop="13dp"
         android:id="@+id/textViewComposition"
         android:inputType="textMultiLine"
@@ -88,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewType"
-        android:layout_alignEnd="@+id/textViewForm"
+        android:layout_alignEnd="@+id/textViewSchemeType"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="42dp"
         android:id="@+id/textViewMRP"
@@ -121,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextQuantity"
-        android:layout_alignEnd="@+id/textViewForm"
+        android:layout_alignEnd="@+id/textViewSchemeType"
         android:layout_marginTop="36dp"
         android:id="@+id/buttonAddCart" />
 </RelativeLayout>

@@ -24,4 +24,6 @@
     <string name="Edit">Edit</string>
     <string name="Type">Type</string>
     <string name="Quantity">Quantity</string>
+    <string name="Expiry">Expiry Date : </string>
+    <string name="addScheme">Add Scheme</string>
 </resources>

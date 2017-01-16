@@ -1,20 +1,18 @@
 package base.com.medicalapp.activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewParent;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
-import java.util.List;
-
 import base.com.medicalapp.R;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
-import base.com.medicalapp.model.Product;
 import base.com.medicalapp.model.ProductFields;
 import base.com.medicalapp.model.ProductRecord;
 
@@ -38,6 +36,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         String record = this.getIntent().getExtras().getString("record");
         String productURL = PRODUCT_URL_BASE+record+apiKey;
         setContentView(R.layout.activity_product_detail);
+        View titleView = getWindow().findViewById(android.R.id.title);
+        if (titleView != null) {
+            ViewParent parent = titleView.getParent();
+            if (parent != null && (parent instanceof View)) {
+                View parentView = (View) parent;
+                parentView.setBackgroundColor(Color.BLUE);
+            }
+        }
         Log.d("MEDIAPP",productURL);
         getProductDetails(productURL);
 
@@ -65,9 +71,9 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     public void initViews(ProductFields productFields) {
 
-        productNameTextView = (TextView) findViewById(R.id.textViewProductDetail);
-        unitPackTextView = (TextView) findViewById(R.id.textViewUnitPack);
-        formTextView = (TextView) findViewById(R.id.textViewForm);
+        productNameTextView = (TextView) findViewById(R.id.textViewSchemeName);
+        unitPackTextView = (TextView) findViewById(R.id.textExpiry);
+        formTextView = (TextView) findViewById(R.id.textViewSchemeType);
         compositionTextView = (TextView) findViewById(R.id.textViewComposition);
         typeTextView = (TextView) findViewById(R.id.textViewType);
         mrpTextView  = (TextView) findViewById(R.id.textViewMRP);

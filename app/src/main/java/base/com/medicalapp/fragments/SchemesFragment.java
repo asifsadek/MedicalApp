@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class SchemesFragment extends BaseFragment {
 
     private void initView() {
 
+
         NetworkManager.get(getContext(), ORDER_SCHEME_URL, null, new NetworkManager.NetworkInterface() {
             @Override
             public void onResponse(ApiResponseWrapper baseResponse) {
@@ -50,12 +52,13 @@ public class SchemesFragment extends BaseFragment {
                     Scheme schemes = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), Scheme.class);
                     schemeAdapter.updateData(schemes.records);
 
+
                 }
 
             }
         });
         schemeRecyclerView = (RecyclerView) fragmentView.findViewById(R.id.schemeRecyclerView);
         schemeRecyclerView.setLayoutManager(new LinearLayoutManager(activityContext));
-        schemeRecyclerView.setAdapter(new SchemeAdapter());
+        schemeRecyclerView.setAdapter(schemeAdapter);
     }
 }

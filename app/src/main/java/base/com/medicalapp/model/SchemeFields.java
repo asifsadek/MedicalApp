@@ -13,16 +13,29 @@ public class SchemeFields {
     @SerializedName("Code")
     @Expose
     public String code;
-    @SerializedName("Associated Product")
+    @SerializedName("Is Active")
     @Expose
-    public List<String> associatedProduct = null;
-    @SerializedName("Type")
+    public Boolean isActive;
+    @SerializedName("Expiry Date")
     @Expose
-    public String type;
-    @SerializedName("Retailer Product Schemes")
+    public String expiryDate;
+    @SerializedName("Name")
     @Expose
-    public List<Object> retailerProductSchemes = null;
+    public String name;
+    @SerializedName("Is MRP")
+    @Expose
+    public Boolean isMRP;
+    @SerializedName("Description")
+    @Expose
+    public String description;
     @SerializedName("Is Product")
     @Expose
     public Integer isProduct;
+    @SerializedName("Type")
+    @Expose
+    public String type;
+    @SerializedName("Retailer Schemes")
+    @Expose
+    public List<Object> retailerSchemes = null;
+
 }
