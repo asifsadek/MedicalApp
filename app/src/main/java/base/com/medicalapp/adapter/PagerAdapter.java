@@ -3,12 +3,11 @@ package base.com.medicalapp.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import base.com.medicalapp.fragments.OrdersFragment;
 import base.com.medicalapp.fragments.ProductsFragment;
 import base.com.medicalapp.fragments.SchemesFragment;
-import base.com.medicalapp.fragments.SettingFragment;
+import base.com.medicalapp.fragments.CartFragment;
 
 
 public class PagerAdapter extends FragmentPagerAdapter {
@@ -27,7 +26,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return new OrdersFragment();
             case 3:
-                return new SettingFragment();
+                return new CartFragment();
             default:
                 return null;
         }

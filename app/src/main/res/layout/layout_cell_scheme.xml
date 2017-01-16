@@ -22,7 +22,7 @@
         android:src="@drawable/right_arrow"
         android:layout_marginEnd="10dp"
         android:layout_centerVertical="true"
-android:id="@+id/rightArrow"
+        android:id="@+id/rightArrow"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content" />
 
