@@ -5,8 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import base.com.medicalapp.R;
+import base.com.medicalapp.manager.ApiResponseWrapper;
+import base.com.medicalapp.manager.NetworkManager;
+import base.com.medicalapp.model.Retailer;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+
+    private static final String REGISTER_URL
+            = "Retailers?api_key=keyOKgBm0Ho3UFLs6";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +41,24 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void validateAndRegister() {
         goToHomePage();
-
-        String name = getValueFromView(R.id.nameEditText);
-        String pharmacyName = getValueFromView(R.id.pharmacyNameEditText);
-        String email = getValueFromView(R.id.emailEditText);
-        String address = getValueFromView(R.id.addressEditText);
-        String tinNo = getValueFromView(R.id.tinNoEditText);
-        String dlNo = getValueFromView(R.id.dlNoEditText);
+        Retailer newRetailer = new Retailer();
+        newRetailer.retailerFields.contactName = getValueFromView(R.id.nameEditText);
+        newRetailer.retailerFields.name = getValueFromView(R.id.pharmacyNameEditText);
+        newRetailer.retailerFields.email = getValueFromView(R.id.emailEditText);
+        newRetailer.retailerFields.address = getValueFromView(R.id.addressEditText);
+        newRetailer.retailerFields.tINNo = getValueFromView(R.id.tinNoEditText);
+        newRetailer.retailerFields.dLNo = getValueFromView(R.id.dlNoEditText);
         String password = getValueFromView(R.id.passwordEditText);
 
 
-        if (name != null && pharmacyName != null && email != null && address != null &&
-                tinNo != null && dlNo != null && password != null) {
+        if (newRetailer.retailerFields.contactName != null && newRetailer.retailerFields.name != null && newRetailer.retailerFields.email != null && newRetailer.retailerFields.address != null &&
+                newRetailer.retailerFields.tINNo != null && newRetailer.retailerFields.dLNo != null && password != null) {
 
+            //NetworkManager.post(this.getBaseContext(), REGISTER_URL, null, new NetworkManager.NetworkInterface() {
+             //   @Override
+              //  public void onResponse(ApiResponseWrapper baseResponse) {
 
+                //    if (baseResponse != null && baseResponse.isSuccess()) {
 
         }else{
 

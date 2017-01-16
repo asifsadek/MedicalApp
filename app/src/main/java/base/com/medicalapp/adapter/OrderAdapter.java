@@ -1,5 +1,6 @@
 package base.com.medicalapp.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import base.com.medicalapp.model.OrderRecord;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
     private List<OrderRecord> orderRecordArray;
+    private Context mContext;
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,6 +35,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             holder.orderId.setText(Integer.toString(jsonObject.orderFields.iD));
             holder.date.setText(dateToDisplay(jsonObject.orderFields.date));
             holder.status.setText(jsonObject.orderFields.status);
+            if(jsonObject.orderFields.status == "SHIPPED")
+             holder.status.setBackgroundResource(android.R.color.holo_green_light);
 
         }
 
