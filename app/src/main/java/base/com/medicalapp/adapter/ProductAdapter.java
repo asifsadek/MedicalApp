@@ -53,9 +53,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         ProductRecord jsonObject = getItem(position);
-        if (jsonObject.fields.product!=null) {
+        if (jsonObject.fields.name!=null) {
 
-            String imageID = jsonObject.fields.product;
+            String imageID = jsonObject.fields.name;
             holder.medicineName.setText(imageID);
             holder.medicineMrp.setText(Float.toString(jsonObject.fields.mRP));
             holder.schemeFlag.setVisibility(View.INVISIBLE);

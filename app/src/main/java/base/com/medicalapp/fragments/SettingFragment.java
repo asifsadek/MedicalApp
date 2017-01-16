@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 
 import base.com.medicalapp.R;
 
-/**
- * Created by Abhishek on 1/7/2017.
- */
+
 
 public class SettingFragment extends BaseFragment {
 

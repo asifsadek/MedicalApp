@@ -16,9 +16,7 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
-/**
- * Created by Abhishek on 1/8/2017.
- */
+
 public class NetworkManager {
     static final int DEFAULT_TIMEOUT = 60 * 1000;
     static ProductAdapter mJSONAdapter;

@@ -27,7 +27,7 @@ android:id="@+id/rightArrow"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/medicineExpery"
+        android:id="@+id/schemeExpiry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/rightArrow"
@@ -35,6 +35,15 @@ android:id="@+id/rightArrow"
         android:paddingStart="5dp"
         android:paddingEnd="10dp"
         android:textSize="16sp"
-       />
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/schemeId"
+        android:layout_toEndOf="@+id/schemeId"
+        android:layout_marginStart="71dp"
+        android:id="@+id/schemeType" />
 
 </RelativeLayout>

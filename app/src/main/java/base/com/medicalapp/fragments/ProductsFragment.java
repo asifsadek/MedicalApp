@@ -17,9 +17,6 @@ import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
 import base.com.medicalapp.model.Product;
 
-/**
- * Created by Abhishek on 1/7/2017.
- */
 
 public class ProductsFragment extends BaseFragment {
 

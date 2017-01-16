@@ -19,9 +19,7 @@ import base.com.medicalapp.manager.NetworkManager;
 import base.com.medicalapp.model.Product;
 import base.com.medicalapp.model.Scheme;
 
-/**
- * Created by Abhishek on 1/7/2017.
- */
+
 
 public class SchemesFragment extends BaseFragment {
 

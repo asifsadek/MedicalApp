@@ -10,9 +10,6 @@ import base.com.medicalapp.fragments.ProductsFragment;
 import base.com.medicalapp.fragments.SchemesFragment;
 import base.com.medicalapp.fragments.SettingFragment;
 
-/**
- * Created by Abhishek on 1/8/2017.
- */
 
 public class PagerAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 4;

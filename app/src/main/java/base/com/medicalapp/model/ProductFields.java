@@ -18,9 +18,9 @@ public class ProductFields {
     @SerializedName("Unit Pack")
     @Expose
     public String unitPack;
-    @SerializedName("Product")
+    @SerializedName("Name")
     @Expose
-    public String product;
+    public String name;
     @SerializedName("PTR (per Unit Pack)")
     @Expose
     public Float pTRPerUnitPack;

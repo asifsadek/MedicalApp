@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import base.com.medicalapp.R;
+import base.com.medicalapp.model.Scheme;
 import base.com.medicalapp.model.SchemeRecord;
 
 
@@ -26,9 +27,12 @@ public class SchemeAdapter extends RecyclerView.Adapter<SchemeAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.medicineName.setText("Cefimak");
-        holder.medicineExpery.setText("Till Stock last");
+        SchemeRecord jsonObject = getItem(position);
+        if (jsonObject.fields.retailerProductSchemes!=null) {
+                holder.schemeName.setText(jsonObject.fields.code);
+                holder.schemeType.setText(jsonObject.fields.type);
 
+        }
     }
 
     public void updateData(List<SchemeRecord> recordArray) {
@@ -36,6 +40,17 @@ public class SchemeAdapter extends RecyclerView.Adapter<SchemeAdapter.ViewHolder
         // update the adapter's dataset
         schemeRecordArray = recordArray;
         notifyDataSetChanged();
+    }
+
+    public SchemeRecord getItem(int position) {
+        return schemeRecordArray.get(position);
+    }
+
+    @Override public long getItemId(int position) {
+
+        // your particular dataset uses String IDs
+        // but you have to put something in this method
+        return position;
     }
 
     @Override
@@ -47,13 +62,14 @@ public class SchemeAdapter extends RecyclerView.Adapter<SchemeAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView medicineName;
-        public TextView medicineExpery;
+        public TextView schemeName;
+        public TextView schemeExpiry;
+        public TextView schemeType;
 
         public ViewHolder(View v) {
             super(v);
-            medicineName = (TextView) v.findViewById(R.id.schemeId);
-            medicineExpery = (TextView) v.findViewById(R.id.medicineExpery);
+            schemeName = (TextView) v.findViewById(R.id.schemeId);
+            schemeExpiry = (TextView) v.findViewById(R.id.schemeExpiry);
 
         }
     }

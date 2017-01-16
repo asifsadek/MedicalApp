@@ -84,7 +84,7 @@
 
         <TextView
             style="@style/main_header_style"
-            android:text="@string/settings" />
+            android:text="@string/cart" />
 
         <TextView
             style="@style/main_header_style"

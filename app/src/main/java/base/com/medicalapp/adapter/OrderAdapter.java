@@ -11,9 +11,7 @@ import java.util.List;
 import base.com.medicalapp.R;
 import base.com.medicalapp.model.OrderRecord;
 
-/**
- * Created by Abhishek on 1/8/2017.
- */
+
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
