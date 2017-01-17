@@ -31,12 +31,21 @@ public class OrderFields {
     @SerializedName("Discount \u20b9")
     @Expose
     public List<Integer> discount = null;
+    @SerializedName("Retailer")
+    @Expose
+    public List<String> retailer = null;
+    @SerializedName("Stockist")
+    @Expose
+    public List<String> stockist = null;
     @SerializedName("Net")
     @Expose
     public Integer net;
     @SerializedName("All Schemes")
     @Expose
     public String allSchemes;
+    @SerializedName("Notes")
+    @Expose
+    public String notes;
     @SerializedName("MRP Total")
     @Expose
     public Integer mRPTotal;
