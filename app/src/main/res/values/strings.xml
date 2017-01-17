@@ -27,4 +27,5 @@
     <string name="Expiry">Expiry Date : </string>
     <string name="addScheme">Add Scheme</string>
     <string name="orderId">OrderId :</string>
+    <string name="mrp">MRP :</string>
 </resources>

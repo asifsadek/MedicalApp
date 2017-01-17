@@ -126,5 +126,16 @@
         android:layout_alignEnd="@+id/textViewSchemeType"
         android:layout_marginTop="36dp"
         android:id="@+id/buttonAddCart" />
+
+    <TextView
+        android:text="@string/mrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextQuantity"
+        android:layout_toStartOf="@+id/buttonAddCart"
+        android:id="@+id/textView"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="viewStart" />
 </RelativeLayout>
 
