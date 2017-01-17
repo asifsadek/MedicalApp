@@ -12,5 +12,11 @@ public class Retailer {
     @SerializedName("fields")
     @Expose
     public RetailerFields retailerFields;
+    @SerializedName("id")
+    @Expose
+    public String id;
+    @SerializedName("createdTime")
+    @Expose
+    public String createdTime;
 
 }
