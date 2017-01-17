@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -16,7 +17,7 @@ import base.com.medicalapp.manager.NetworkManager;
 import base.com.medicalapp.model.ProductFields;
 import base.com.medicalapp.model.ProductRecord;
 
-public class ProductDetailActivity extends AppCompatActivity {
+public class ProductDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String PRODUCT_URL_BASE
             = "Products/";
@@ -28,6 +29,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     private TextView compositionTextView;
     private TextView typeTextView;
     private TextView mrpTextView;
+    private EditText quantityTextField;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +39,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         String record = this.getIntent().getExtras().getString("record");
         String productURL = PRODUCT_URL_BASE+record+apiKey;
         setContentView(R.layout.activity_product_detail);
-        View titleView = getWindow().findViewById(android.R.id.title);
-        if (titleView != null) {
-            ViewParent parent = titleView.getParent();
-            if (parent != null && (parent instanceof View)) {
-                View parentView = (View) parent;
-                parentView.setBackgroundColor(Color.BLUE);
-            }
-        }
-        Log.d("MEDIAPP",productURL);
+
         getProductDetails(productURL);
 
     }
@@ -77,6 +72,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         compositionTextView = (TextView) findViewById(R.id.textViewComposition);
         typeTextView = (TextView) findViewById(R.id.textViewType);
         mrpTextView  = (TextView) findViewById(R.id.textViewMRP);
+        quantityTextField = (EditText)findViewById(R.id.editTextQuantity);
 
         productNameTextView.setText(productFields.name);
         unitPackTextView.setText(productFields.pack);
@@ -84,8 +80,27 @@ public class ProductDetailActivity extends AppCompatActivity {
         compositionTextView.setText(productFields.composition);
         typeTextView.setText(typeStringFor(productFields));
         mrpTextView.setText(String.valueOf(productFields.mRP));
+
+        setOnclickListener();
     }
 
+    private void setOnclickListener() {
+
+        findViewById(R.id.buttonAddCart).setOnClickListener(this);
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.buttonAddCart:
+                addProductToCart();
+                break;
+
+        }
+    }
     public String typeStringFor(ProductFields productFields){
 
         String type = "";
@@ -93,6 +108,20 @@ public class ProductDetailActivity extends AppCompatActivity {
            type= type + typeString+",";
        }
         return type;
+    }
+
+    public void addProductToCart(){
+
+        int quantity = Integer.parseInt(quantityTextField.getText().toString());
+        if(quantity>0){
+
+
+
+        }else{
+
+
+        }
+
     }
 
     }
