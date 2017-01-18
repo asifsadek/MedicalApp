@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import base.com.medicalapp.R;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
+import base.com.medicalapp.model.GlobalPreferences;
 import base.com.medicalapp.model.ProductFields;
 import base.com.medicalapp.model.ProductRecord;
 
@@ -115,9 +117,13 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         int quantity = Integer.parseInt(quantityTextField.getText().toString());
         if(quantity>0){
 
+            GlobalPreferences.getInstance().addProductToOrder(productRecord.id,quantity);
+            Toast.makeText(getApplicationContext(), "Added Product to cart", Toast.LENGTH_SHORT).show();
 
 
         }else{
+
+            Toast.makeText(getApplicationContext(), "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
 
 
         }

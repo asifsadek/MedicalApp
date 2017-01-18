@@ -16,6 +16,9 @@ public class OrderItemsFields {
     @SerializedName("Quantity")
     @Expose
     public Integer quantity;
+    @SerializedName("Order")
+    @Expose
+    public List<String> order = null;
     @SerializedName("Product")
     @Expose
     public List<String> product = null;

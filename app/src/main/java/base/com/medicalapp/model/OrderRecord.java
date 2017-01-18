@@ -7,6 +7,9 @@ package base.com.medicalapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OrderRecord {
 
     @SerializedName("id")
@@ -18,5 +21,11 @@ public class OrderRecord {
     @SerializedName("createdTime")
     @Expose
     public String createdTime;
+
+    public OrderRecord(){
+
+        orderFields = new OrderFields();
+        orderFields.retailer = new ArrayList<String>();
+    }
 
 }

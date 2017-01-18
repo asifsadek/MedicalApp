@@ -9,13 +9,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import base.com.medicalapp.R;
+import base.com.medicalapp.model.OrderItemRecords;
 import base.com.medicalapp.model.ProductRecord;
 
 
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
-    List<ProductRecord> productRecordArray ;
+    List<OrderItemRecords> orderItemsRecordArray ;
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -27,22 +28,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        ProductRecord jsonObject = getItem(position);
-        //if (jsonObject.fields.productSchemes!=null) {
+        OrderItemRecords jsonObject = getItem(position);
+        if (jsonObject.fields.productName!=null) {
 
-
-       // }
+                holder.productName.setText(jsonObject.fields.productName.toString());
+                holder.productQuantity.setText(jsonObject.fields.quantity.toString());
+                holder.productPrice.setText(jsonObject.fields.mRPTotal.toString());
+        }
     }
 
-    public void updateData(List<ProductRecord> recordArray) {
+    public void updateData(List<OrderItemRecords> recordArray) {
 
         // update the adapter's dataset
-        productRecordArray = recordArray;
+        orderItemsRecordArray = recordArray;
         notifyDataSetChanged();
     }
 
-    public ProductRecord getItem(int position) {
-        return productRecordArray.get(position);
+    public OrderItemRecords getItem(int position) {
+        return orderItemsRecordArray.get(position);
     }
 
     @Override public long getItemId(int position) {
@@ -54,21 +57,23 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        if (productRecordArray != null) {
-            return productRecordArray.size();
+        if (orderItemsRecordArray != null) {
+            return orderItemsRecordArray.size();
         }
+
         return 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView schemeName;
-        public TextView schemeExpiry;
-        public TextView schemeType;
+        public TextView productName;
+        public TextView productPrice;
+        public TextView productQuantity;
 
         public ViewHolder(View v) {
             super(v);
-            schemeName = (TextView) v.findViewById(R.id.schemeId);
-            schemeExpiry = (TextView) v.findViewById(R.id.schemeExpiry);
+            productName = (TextView) v.findViewById(R.id.cart_product_name);
+            productPrice = (TextView) v.findViewById(R.id.cart_product_price);
+            productQuantity = (TextView)v.findViewById(R.id.cart_product_quantity);
 
         }
     }
