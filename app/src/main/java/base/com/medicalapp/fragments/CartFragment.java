@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -104,7 +105,8 @@ public class CartFragment extends BaseFragment {
     public void onClick(View v) {
 
         GlobalPreferences.getInstance().confirmOrder();
-        initView();
+        Toast.makeText(getContext(), "Order Placed Successfully", Toast.LENGTH_SHORT).show();
+        loadCartData();
     }
 
     @Override

@@ -34,10 +34,15 @@ public class GlobalPreferences {
     private OrderItemRecords orderItemrecord;
 
     private GlobalPreferences() {
+
+        initOrderValues();
+
+    }
+    private void initOrderValues(){
+
         retailerRecordId = "0";
         orderRecordId = "0";
         orderID="0";
-
     }
 
     public static GlobalPreferences getInstance() {
@@ -216,10 +221,8 @@ public class GlobalPreferences {
         String retailerJson = gson.toJson(newOrderRecords);
         StringEntity updateOrderEntity = new StringEntity(retailerJson, "UTF-8");
         updateOrderEntity.setContentType("application/json");
-        Log.v("CONFIRM",retailerJson);
-
         String ORDER_RECORD_URL = ORDERS_URL_BASE+"/"+getOrderRecordId()+APIKEY;
-        Log.v("CONFIRM",ORDER_RECORD_URL);
+
 
         NetworkManager.patch(context, ORDER_ITEMS_URL_BASE, updateOrderEntity, new NetworkManager.NetworkInterface() {
             @Override
@@ -234,7 +237,7 @@ public class GlobalPreferences {
             }
         });
 
-
+        initOrderValues();
 
 
     }
