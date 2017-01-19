@@ -73,8 +73,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     if (baseResponse != null && baseResponse.isSuccess()) {
                         Gson gson = new Gson();
                         Retailer retailerNew = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), Retailer.class);
-                        RetailerRecord retailerRecord = retailerNew.records.get(0);
-                        if(retailerRecord.id!=null) {
+                        if(retailerNew.records.size()>0) {
+                            RetailerRecord retailerRecord = retailerNew.records.get(0);
                             GlobalPreferences.getInstance().setRetailerRecordId(retailerRecord.id);
                             GlobalPreferences.getInstance().setRetailerID(retailerRecord.retailerFields.mobile.toString());
                             goToHomePage();
