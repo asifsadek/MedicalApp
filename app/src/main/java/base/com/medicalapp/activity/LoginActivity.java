@@ -59,7 +59,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         TextView retailerMobileTextView = (TextView)findViewById(R.id.phoneNumber);
 
-        if (retailerMobileTextView.getText().toString()!=null) {
+        String retailerMobile = retailerMobileTextView.getText().toString().trim();
+        if (!retailerMobile.isEmpty()) {
 
             String RETAILER_URL = RETAILER_URL_BASE+"filterByFormula={Mobile}='"+retailerMobileTextView.getText().toString()+"'&api_key=keyOKgBm0Ho3UFLs6";
 
