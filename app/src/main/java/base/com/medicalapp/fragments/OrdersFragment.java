@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 
+import java.net.URL;
+
 import base.com.medicalapp.R;
 import base.com.medicalapp.adapter.OrderAdapter;
 import base.com.medicalapp.adapter.SchemeAdapter;
@@ -30,7 +32,7 @@ public class OrdersFragment extends BaseFragment {
     OrderAdapter orderAdapter = new OrderAdapter();
     private RecyclerView productRecyclerView;
     private static final String ORDER_URL_BASE
-            = "Orders/";
+            = "Orders?";
     private static final String APIKEY
             = "&api_key=keyOKgBm0Ho3UFLs6";
 
@@ -47,7 +49,8 @@ public class OrdersFragment extends BaseFragment {
 
     private void initView() {
 
-        String URL_COMPLETE = ORDER_URL_BASE+"filterByFormula=(Retailer=\""+ GlobalPreferences.getInstance().getRetailerID()+APIKEY;
+        String URL_COMPLETE = ORDER_URL_BASE+"filterByFormula=(Retailer=\""+ GlobalPreferences.getInstance().getRetailerID()+"\")"+APIKEY;
+        Log.v("ORDER URL", URL_COMPLETE);
         NetworkManager.get(getContext(), URL_COMPLETE, null, new NetworkManager.NetworkInterface() {
             @Override
             public void onResponse(ApiResponseWrapper baseResponse) {

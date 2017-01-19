@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -94,19 +95,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+        Log.v("MAIN ", String.valueOf(v.getId()));
+
         switch (v.getId()) {
 
             case R.id.productsContainer:
-
+                categoryViewPager.setCurrentItem(0);
                 setSelection(R.id.productsContainer);
                 break;
             case R.id.schemesContainer:
+                categoryViewPager.setCurrentItem(1);
                 setSelection(R.id.schemesContainer);
                 break;
             case R.id.ordersContainer:
+                categoryViewPager.setCurrentItem(2);
                 setSelection(R.id.ordersContainer);
                 break;
             case R.id.settingContainer:
+                categoryViewPager.setCurrentItem(3);
                 setSelection(R.id.settingContainer);
                 break;
         }
@@ -118,5 +124,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         selectedLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.color_gray));
         findViewById(containerId).setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimary));
         selectedLayout = (LinearLayout) findViewById(containerId);
+
     }
 }
