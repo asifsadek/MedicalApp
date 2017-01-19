@@ -1,6 +1,5 @@
 package base.com.medicalapp.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,17 +8,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import base.com.medicalapp.R;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
 import base.com.medicalapp.model.GlobalPreferences;
-import base.com.medicalapp.model.Orders;
 import base.com.medicalapp.model.Retailer;
 import base.com.medicalapp.model.RetailerFields;
+import base.com.medicalapp.model.RetailerRecord;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
@@ -56,7 +51,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void validateAndRegister() {
 
-        Retailer newRetailer = getNewRetailerValues();
+        RetailerRecord newRetailer = getNewRetailerValues();
         Gson gson = new Gson();
         String retailerJson = gson.toJson(newRetailer);
         StringEntity retailerRegistrationEntity = new StringEntity(retailerJson, "UTF-8");
@@ -73,7 +68,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     if (baseResponse != null && baseResponse.isSuccess()) {
                         Gson gson = new Gson();
                         Retailer retailerNew = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), Retailer.class);
-                        GlobalPreferences.getInstance().setRetailerId(retailerNew.id);
+                        RetailerRecord retailerRecord = retailerNew.records.get(0);
+                        GlobalPreferences.getInstance().setRetailerRecordId(retailerRecord.id);
                         goToHomePage();
                     } else {
                         Toast.makeText(getApplicationContext(), "Please enter all required information to proceed", Toast.LENGTH_SHORT).show();
@@ -85,7 +81,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             }
         }
 
-    private Retailer getNewRetailerValues() {
+    private RetailerRecord getNewRetailerValues() {
 
         TextView pharmacyNameView = (TextView) findViewById(R.id.pharmacyNameEditText);
         TextView emailTextView = (TextView) findViewById(R.id.emailEditText);
@@ -104,7 +100,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         retailerFields.address = addressTextView.getText().toString();
         retailerFields.mobile = mobileTextView.getText().toString();
 
-        Retailer retailer = new Retailer();
+        RetailerRecord retailer = new RetailerRecord();
         retailer.retailerFields = retailerFields;
         return retailer;
 

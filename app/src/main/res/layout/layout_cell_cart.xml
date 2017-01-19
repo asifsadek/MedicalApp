@@ -24,17 +24,17 @@
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:paddingLeft="8dp"
-            android:paddingRight="8dp">
+            android:background="@color/color_gray">
 
             <TextView
                 android:id="@+id/cart_product_name"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif"
                 android:maxLines="2"
-                android:paddingBottom="4dp"
-                android:textSize="15sp"
-                tools:text="Product name"/>
+                android:textSize="18sp"
+                tools:text="Product name"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:id="@+id/cart_product_price"
@@ -85,7 +85,6 @@
                 android:drawablePadding="3dp"
                 android:drawableTop="@drawable/delete"
                 android:gravity="center"
-                android:padding="6dp"
                 android:text="@string/Delete"
                 android:textColor="@color/color_dark_gray"
                 android:textSize="12sp"/>
@@ -98,7 +97,6 @@
                 android:drawablePadding="3dp"
                 android:drawableTop="@drawable/update"
                 android:gravity="center"
-                android:padding="6dp"
                 android:text="@string/Edit"
                 android:textColor="@color/color_dark_gray"
                 android:textSize="12sp"/>

@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import base.com.medicalapp.R;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
+import base.com.medicalapp.model.GlobalPreferences;
 import base.com.medicalapp.model.SchemeFields;
 import base.com.medicalapp.model.SchemeRecord;
 
@@ -99,7 +100,8 @@ public class SchemeDetailActivity extends AppCompatActivity  implements View.OnC
 
     public void addSchemeToCart(){
 
-        //
+        GlobalPreferences.getInstance().addSchemeToCart(schemeRecord.id);
+
 
     }
 

@@ -149,6 +149,57 @@ public class NetworkManager {
 
     }
 
+    public static void patch(Context applicationContext, String url, HttpEntity entity, final NetworkInterface networkInterface) {
+
+
+        if (!Utils.isInternetOn(applicationContext)) {
+            networkInterface.onResponse(new ApiResponseWrapper(null, false, applicationContext.getResources().getString(R.string.no_network)));
+            return;
+        }
+        getClient().patch(applicationContext, getAbsoluteUrl(url), entity, NetworkConstants.REQUEST_BODY_CONTENT_TYPE, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                // GLog.log("ServerResponse>>"+response!= null?response.toString():"");
+
+                networkInterface.onResponse(new ApiResponseWrapper(response, true, null));
+                // If the response is JSONObject instead of expected JSONArray
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                // GLog.log("ServerResponse>>"+errorResponse!= null?errorResponse.toString():"");
+
+                networkInterface.onResponse(new ApiResponseWrapper(null, false, NetworkConstants.API_ERROR_MESSAGE));
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                // GLog.log("ServerResponse>>"+responseString);
+
+                networkInterface.onResponse(new ApiResponseWrapper(null, false, NetworkConstants.API_ERROR_MESSAGE));
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                // GLog.log("ServerResponse>>"+errorResponse!= null?errorResponse.toString():"");
+
+                networkInterface.onResponse(new ApiResponseWrapper(null, false, NetworkConstants.API_ERROR_MESSAGE));
+            }
+        });
+
+    }
+
 
 
 }

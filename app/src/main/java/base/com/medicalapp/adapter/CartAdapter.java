@@ -32,8 +32,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         if (jsonObject.fields.productName!=null) {
 
                 holder.productName.setText(jsonObject.fields.productName.toString());
-                holder.productQuantity.setText(jsonObject.fields.quantity.toString());
-                holder.productPrice.setText(jsonObject.fields.mRPTotal.toString());
+                holder.productQuantity.setText("Qty : "+jsonObject.fields.quantity.toString());
+                holder.productPrice.setText("MRP : "+jsonObject.fields.mRPTotal.toString());
         }
     }
 

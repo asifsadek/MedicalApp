@@ -27,7 +27,7 @@ public class OrderFields {
     public List<Boolean> schemeStatus = null;
     @SerializedName("Total")
     @Expose
-    public Integer total;
+    public Float total;
     @SerializedName("Discount \u20b9")
     @Expose
     public List<Integer> discount = null;
@@ -39,7 +39,7 @@ public class OrderFields {
     public List<String> stockist = null;
     @SerializedName("Net")
     @Expose
-    public Integer net;
+    public Float net;
     @SerializedName("All Schemes")
     @Expose
     public String allSchemes;
@@ -48,6 +48,6 @@ public class OrderFields {
     public String notes;
     @SerializedName("MRP Total")
     @Expose
-    public Integer mRPTotal;
+    public Float mRPTotal;
 
 }

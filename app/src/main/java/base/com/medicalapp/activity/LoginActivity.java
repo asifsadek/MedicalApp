@@ -1,6 +1,5 @@
 package base.com.medicalapp.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,10 +10,10 @@ import com.google.gson.Gson;
 
 import base.com.medicalapp.R;
 import base.com.medicalapp.manager.ApiResponseWrapper;
-import base.com.medicalapp.manager.NetworkConstants;
 import base.com.medicalapp.manager.NetworkManager;
 import base.com.medicalapp.model.GlobalPreferences;
 import base.com.medicalapp.model.Retailer;
+import base.com.medicalapp.model.RetailerRecord;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -60,7 +59,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         TextView retailerMobileTextView = (TextView)findViewById(R.id.phoneNumber);
 
-
         if (retailerMobileTextView.getText().toString()!=null) {
 
             String RETAILER_URL = RETAILER_URL_BASE+"filterByFormula={Mobile}='"+retailerMobileTextView.getText().toString()+"'&api_key=keyOKgBm0Ho3UFLs6";
@@ -74,11 +72,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     if (baseResponse != null && baseResponse.isSuccess()) {
                         Gson gson = new Gson();
                         Retailer retailerNew = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), Retailer.class);
-                        GlobalPreferences.getInstance().setRetailerId(retailerNew.id);
-                        goToHomePage();
+                        RetailerRecord retailerRecord = retailerNew.records.get(0);
+                        if(retailerRecord.id!=null) {
+                            GlobalPreferences.getInstance().setRetailerRecordId(retailerRecord.id);
+                            GlobalPreferences.getInstance().setRetailerID(retailerRecord.retailerFields.mobile.toString());
+                            goToHomePage();
+                        }else{
+                            displayLoginErrorToastMessage();
+                        }
                     } else {
 
-                        Toast.makeText(getApplicationContext(), "Unable to find retailer.Please check the number entered", Toast.LENGTH_SHORT).show();
+                        displayLoginErrorToastMessage();
 
                     }
 
@@ -86,6 +90,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
             });
         }
+    }
+
+    private void displayLoginErrorToastMessage(){
+
+        Toast.makeText(getApplicationContext(), "Unable to find retailer.Please check the number entered", Toast.LENGTH_SHORT).show();
+
     }
     }
 

@@ -26,6 +26,7 @@ public class OrderItemRecords {
         fields = new OrderItemsFields();
         fields.order = new ArrayList<String>();
         fields.product = new ArrayList<String>();
+        fields.scheme = new ArrayList<String>();
     }
 
 }

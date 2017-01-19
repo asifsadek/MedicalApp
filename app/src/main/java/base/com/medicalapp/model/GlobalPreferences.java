@@ -2,7 +2,6 @@ package base.com.medicalapp.model;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -26,15 +25,18 @@ public class GlobalPreferences {
     private static final String ORDER_ITEMS_URL_BASE
             = "Order%20Items?api_key=keyOKgBm0Ho3UFLs6";
     private static final String APIKEY = "?api_key=keyOKgBm0Ho3UFLs6";
-    private String retailerId;
+    private String retailerRecordId;
+    private String retailerID;
     private List<OrderFields> cartProducts;
-    private String orderId;
+    private String orderRecordId;
+    private String orderID;
     private static Context context;
     private OrderItemRecords orderItemrecord;
 
     private GlobalPreferences() {
-        retailerId = "0";
-        orderId = "0";
+        retailerRecordId = "0";
+        orderRecordId = "0";
+        orderID="0";
 
     }
 
@@ -55,21 +57,34 @@ public class GlobalPreferences {
         this.orderItemrecord.fields.iD = orderId;
     }
 
-    public String getRetailerId() {
-        return this.retailerId;
+    public void setRetailerID(String ID){
+        this.retailerID = ID;
     }
 
-    public String getOrderId() {
-        return this.orderId;
+    public String getRetailerID(){ return this.retailerID;}
+
+    public String getOrderID(){ return  this.orderID; }
+
+    public String getRetailerRecordId() {
+        return this.retailerRecordId;
+    }
+
+    public String getOrderRecordId() {
+        return this.orderRecordId;
     }
 
     public List<OrderFields> getCartProducts() {
         return this.cartProducts;
     }
 
-    public void setOrderId(String value) {
+    public void setOrderRecordId(String value) {
 
-        orderId = value;
+        orderRecordId = value;
+    }
+
+    public void setOrderID(String value){
+
+        orderID = value;
     }
 
     public void addToCart(OrderFields product) {
@@ -78,43 +93,49 @@ public class GlobalPreferences {
     }
 
 
-    public void setRetailerId(String value) {
-        retailerId = value;
+    public void setRetailerRecordId(String value) {
+        retailerRecordId = value;
     }
 
-    private Orders createNewOrder() {
+    private OrderRecord createNewOrder() {
 
-        Orders order = new Orders();
         OrderRecord newOrderRecord = new OrderRecord();
-        newOrderRecord.orderFields.status="Temperory";
-        newOrderRecord.orderFields.retailer.add(getRetailerId());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        newOrderRecord.orderFields.status="Temporary";
+        newOrderRecord.orderFields.retailer.add(getRetailerRecordId());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
-        newOrderRecord.orderFields.date = date.toString();
-        order.orderRecords.add(newOrderRecord);
-        return order;
+        newOrderRecord.orderFields.date = dateFormat.format(date);
+        return newOrderRecord;
 
     }
 
-    private OrderItems updateOrderItems(String productRecordId, int quantity) {
+    private OrderItemRecords updateOrderItems(String productRecordId, int quantity) {
 
-        OrderItems orderItems = new OrderItems();
         OrderItemRecords orderItemRecords = new OrderItemRecords();
-        orderItemRecords.fields.order.add(getOrderId());
+        orderItemRecords.fields.order.add(getOrderRecordId());
         orderItemRecords.fields.product.add(productRecordId);
         orderItemRecords.fields.quantity = quantity;
-        orderItems.records.add(orderItemRecords);
-        return orderItems;
+        return orderItemRecords;
 
     }
 
-    private void sendCreateOrderRequest(String ProductId,int quantity) {
+    private OrderItemRecords updateSchemeToOrder(String schemeRecordId) {
+
+        OrderItemRecords orderItemRecords = new OrderItemRecords();
+        orderItemRecords.fields.order.add(getOrderRecordId());
+        orderItemRecords.fields.scheme.add(schemeRecordId);
+        return orderItemRecords;
+
+    }
+
+    private void sendCreateOrderRequest(final String ProductId, final int quantity) {
 
         Gson gson = new Gson();
         String retailerJson = gson.toJson(createNewOrder());
         StringEntity createOrderEntity = new StringEntity(retailerJson, "UTF-8");
         createOrderEntity.setContentType("application/json");
-
+        Log.v("URL",ORDERS_URL_BASE+APIKEY);
+        Log.v("JSON",retailerJson);
         NetworkManager.post(context, ORDERS_URL_BASE+APIKEY, createOrderEntity, new NetworkManager.NetworkInterface() {
             @Override
             public void onResponse(ApiResponseWrapper baseResponse) {
@@ -122,10 +143,13 @@ public class GlobalPreferences {
                 if (baseResponse != null && baseResponse.isSuccess()) {
                     Gson gson = new Gson();
                     OrderRecord ordersNew = gson.fromJson(baseResponse.getJsonObjectResponse().toString(), OrderRecord.class);
-                    setOrderId(ordersNew.id);
+                    Log.v("RESPONSE ORDER",baseResponse.getJsonObjectResponse().toString());
+                    setOrderRecordId(ordersNew.id);
+                    setOrderID(ordersNew.orderFields.iD.toString());
+                    addProductToCart(ProductId,quantity);
                     //set new order ID for order items
-
-
+                }else{
+                    Log.v("JSON","CREATE ORDER FAILED");
                 }
             }
         });
@@ -141,7 +165,8 @@ public class GlobalPreferences {
         StringEntity orderItemEntity = new StringEntity(orderItemJson, "UTF-8");
         orderItemEntity.setContentType("application/json");
 
-
+        Log.v("URL", ORDER_ITEMS_URL_BASE);
+        Log.v("JSON",orderItemJson);
         NetworkManager.post(context, ORDER_ITEMS_URL_BASE, orderItemEntity, new NetworkManager.NetworkInterface() {
             @Override
             public void onResponse(ApiResponseWrapper baseResponse) {
@@ -150,6 +175,33 @@ public class GlobalPreferences {
                     //update Order success
 
 
+                }else{
+                    Log.v("JSON","ADD PRODUCT FAILED");
+                }
+            }
+        });
+
+    }
+
+    public void addSchemeToCart(String schemeRecordId){
+
+        Gson gson = new Gson();
+        String orderItemJson = gson.toJson(updateSchemeToOrder(schemeRecordId));
+        StringEntity orderItemEntity = new StringEntity(orderItemJson, "UTF-8");
+        orderItemEntity.setContentType("application/json");
+
+        Log.v("URL", ORDER_ITEMS_URL_BASE);
+        Log.v("JSON",orderItemJson);
+        NetworkManager.post(context, ORDER_ITEMS_URL_BASE, orderItemEntity, new NetworkManager.NetworkInterface() {
+            @Override
+            public void onResponse(ApiResponseWrapper baseResponse) {
+
+                if (baseResponse != null && baseResponse.isSuccess()) {
+                    //update Order success
+
+
+                }else{
+                    Log.v("JSON","ADD PRODUCT FAILED");
                 }
             }
         });
@@ -159,23 +211,24 @@ public class GlobalPreferences {
     public void confirmOrder(){
 
         Gson gson = new Gson();
-        OrderRecord newOrderRecord = new OrderRecord();
-        newOrderRecord.orderFields.status = "Unconfirmed";
-        Orders order = new Orders();
-        order.orderRecords.add(newOrderRecord);
-        String retailerJson = gson.toJson(order);
+        OrderRecord newOrderRecords= new OrderRecord();
+        newOrderRecords.orderFields.status = "Unconfirmed";
+        String retailerJson = gson.toJson(newOrderRecords);
         StringEntity updateOrderEntity = new StringEntity(retailerJson, "UTF-8");
         updateOrderEntity.setContentType("application/json");
+        Log.v("CONFIRM",retailerJson);
 
-        String ORDER_RECORD_URL = ORDERS_URL_BASE+"/"+getOrderId()+APIKEY;
+        String ORDER_RECORD_URL = ORDERS_URL_BASE+"/"+getOrderRecordId()+APIKEY;
+        Log.v("CONFIRM",ORDER_RECORD_URL);
 
-        NetworkManager.post(context, ORDER_ITEMS_URL_BASE, updateOrderEntity, new NetworkManager.NetworkInterface() {
+        NetworkManager.patch(context, ORDER_ITEMS_URL_BASE, updateOrderEntity, new NetworkManager.NetworkInterface() {
             @Override
             public void onResponse(ApiResponseWrapper baseResponse) {
 
                 if (baseResponse != null && baseResponse.isSuccess()) {
                     //update Order success
-                    setOrderId("0");
+                    setOrderRecordId("0");
+                    setOrderID("0");
 
                 }
             }
@@ -188,7 +241,7 @@ public class GlobalPreferences {
 
     public void addProductToOrder(String productRecordId,int quantity){
 
-        if(getOrderId()!="0"){
+        if(getOrderRecordId()!="0"){
             //order created update order items
             addProductToCart(productRecordId,quantity);
 
@@ -196,6 +249,12 @@ public class GlobalPreferences {
             //orderId zero, create order
             sendCreateOrderRequest(productRecordId,quantity);
         }
+
+    }
+
+    public void createRetailerSchemes(){
+
+
 
     }
 

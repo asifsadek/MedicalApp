@@ -24,7 +24,7 @@ public class OrderItemsFields {
     public List<String> product = null;
     @SerializedName("Scheme")
     @Expose
-    public List<Object> scheme = null;
+    public List<String> scheme = null;
     @SerializedName("Product Name")
     @Expose
     public List<String> productName = null;
@@ -45,6 +45,6 @@ public class OrderItemsFields {
     public List<Float> mRP = null;
     @SerializedName("MRP Total")
     @Expose
-    public Integer mRPTotal;
+    public Float mRPTotal;
 
 }

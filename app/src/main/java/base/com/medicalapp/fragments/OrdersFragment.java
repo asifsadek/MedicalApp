@@ -17,6 +17,7 @@ import base.com.medicalapp.adapter.OrderAdapter;
 import base.com.medicalapp.adapter.SchemeAdapter;
 import base.com.medicalapp.manager.ApiResponseWrapper;
 import base.com.medicalapp.manager.NetworkManager;
+import base.com.medicalapp.model.GlobalPreferences;
 import base.com.medicalapp.model.Orders;
 import base.com.medicalapp.model.Product;
 
@@ -28,8 +29,10 @@ public class OrdersFragment extends BaseFragment {
     private RecyclerView orderRecyclerView;
     OrderAdapter orderAdapter = new OrderAdapter();
     private RecyclerView productRecyclerView;
-    private static final String IMAGE_URL_BASE
-            = "Orders?api_key=keyOKgBm0Ho3UFLs6";
+    private static final String ORDER_URL_BASE
+            = "Orders/";
+    private static final String APIKEY
+            = "&api_key=keyOKgBm0Ho3UFLs6";
 
     @Nullable
     @Override
@@ -44,7 +47,8 @@ public class OrdersFragment extends BaseFragment {
 
     private void initView() {
 
-        NetworkManager.get(getContext(), IMAGE_URL_BASE, null, new NetworkManager.NetworkInterface() {
+        String URL_COMPLETE = ORDER_URL_BASE+"filterByFormula=(Retailer=\""+ GlobalPreferences.getInstance().getRetailerID()+APIKEY;
+        NetworkManager.get(getContext(), URL_COMPLETE, null, new NetworkManager.NetworkInterface() {
             @Override
             public void onResponse(ApiResponseWrapper baseResponse) {
 
