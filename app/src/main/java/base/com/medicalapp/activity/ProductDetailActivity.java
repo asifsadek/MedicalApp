@@ -114,19 +114,23 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
     public void addProductToCart(){
 
-        int quantity = Integer.parseInt(quantityTextField.getText().toString());
-        if(quantity>0){
+        if(!quantityTextField.getText().toString().isEmpty()) {
+            int quantity = Integer.parseInt(quantityTextField.getText().toString());
+            if (quantity > 0) {
 
-            GlobalPreferences.getInstance().addProductToOrder(productRecord.id,quantity);
-            Toast.makeText(getApplicationContext(), "Added Product to cart", Toast.LENGTH_SHORT).show();
-
-
-        }else{
-
-            Toast.makeText(getApplicationContext(), "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
+                GlobalPreferences.getInstance().addProductToOrder(productRecord.id, quantity);
+                Toast.makeText(getApplicationContext(), "Added Product to cart", Toast.LENGTH_SHORT).show();
 
 
+            } else
+                showErrorToast();
         }
+
+    }
+
+    private void showErrorToast(){
+
+        Toast.makeText(getApplicationContext(), "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
 
     }
 
